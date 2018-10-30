@@ -1,3 +1,10 @@
+# =============================================================================
+# MisCallbacks.py - Leonardo Pepino (Universidad Nacional de Tres de Febrero)
+#
+# This script defines the custom loss function. Also callbacks for model reading/
+# writing are supplied.
+# =============================================================================
+
 import keras
 import keras.backend as k
 import pickle
@@ -13,11 +20,14 @@ def ConfigurarTF():
     
 def LeerModelo(modelo,weightfile,optimizerfile = None):
 
-    """Permite cargar los parámetros de la red neuronal para continuar el entrenamiento o realizar predicciones.
+    """Permite cargar los parámetros de la red neuronal para continuar el 
+    entrenamiento o realizar predicciones.
     Argumentos:
     modelo: es el modelo compilado de Keras al cual se le cargaran los parámetros.
     weightfile: es el archivo .hdf5 que contiene los pesos sinápticos.
-    optimizerfile: es el archivo .pkl que contiene los momentos del optimizador. Es necesario si se quiere continuar el entrenamiento, pero no lo es para realizar predicciones.
+    optimizerfile: es el archivo .pkl que contiene los momentos del optimizador.
+    Es necesario si se quiere continuar el entrenamiento, pero no lo es para 
+    realizar predicciones.
     """
 
     modelo.load_weights(weightfile)
@@ -34,7 +44,9 @@ def LeerModelo(modelo,weightfile,optimizerfile = None):
 
 class GuardarModelo(keras.callbacks.Callback):
 
-    """Clase que permite guardar al finalizar cada época de entrenamiento los pesos sinápticos de la red en un archivo .hdf5 y el estado del optimizador en un .pkl."""
+    """Clase que permite guardar al finalizar cada época de entrenamiento los 
+    pesos sinápticos de la red en un archivo .hdf5 y el estado del optimizador 
+    en un .pkl."""
 	
     def __init__(self,filepath):
         
@@ -54,7 +66,8 @@ class GuardarModelo(keras.callbacks.Callback):
 
 def CustomLossFunction(yTrue,yPred):
 
-    """Función de costo propuesta. Toma como argumentos el espectrograma verdadero y el predicho, y devuelve el error."""  
+    """Función de costo propuesta. Toma como argumentos el espectrograma 
+    verdadero y el predicho, y devuelve el error."""  
 	
     BassTrue = yTrue[:,:,:,:,0]
     BassPred = yPred[:,:,:,:,0]              
@@ -78,3 +91,72 @@ def CustomLossFunction(yTrue,yPred):
     err = basemse - alpha*diffmse - beta*othersmse - betav*othvocmse + 0.01*recons
     
     return err
+
+#Métricas de performance:
+    
+def MetricBaseLoss(yTrue,yPred):
+    BassTrue = yTrue[:,:,:,:,0]
+    BassPred = yPred[:,:,:,:,0]              
+    DrumsTrue = yTrue[:,:,:,:,1]
+    DrumsPred = yPred[:,:,:,:,1]
+    VocalsTrue = yTrue[:,:,:,:,3]
+    VocalsPred = yPred[:,:,:,:,3]
+   
+    return k.mean(k.square(BassPred-BassTrue)+k.square(DrumsPred-DrumsTrue)+k.square(VocalsPred-VocalsTrue),axis=-1)
+
+def MetricInterference(yTrue,yPred):
+    BassPred = yPred[:,:,:,:,0]              
+    DrumsPred = yPred[:,:,:,:,1]
+    VocalsPred = yPred[:,:,:,:,3]
+    OthersPred = yPred[:,:,:,:,2]
+    return k.mean(k.square(BassPred-DrumsPred)+k.square(BassPred-OthersPred)+k.square(BassPred-VocalsPred)+
+                     k.square(DrumsPred-VocalsPred)+k.square(DrumsPred-OthersPred)+k.square(VocalsPred-OthersPred),axis=-1)
+    
+def MetricOthVoc(yTrue,yPred):
+    VocalsPred = yPred[:,:,:,:,3]
+    OthersTrue = yTrue[:,:,:,:,2]
+    return k.mean(k.square(VocalsPred-OthersTrue),axis=-1)
+
+def MetricOthers(yTrue,yPred):
+    BassPred = yPred[:,:,:,:,0]              
+    DrumsPred = yPred[:,:,:,:,1]
+    VocalsPred = yPred[:,:,:,:,3]
+    OthersTrue = yTrue[:,:,:,:,2]
+    
+    return k.mean(k.square(VocalsPred-OthersTrue) + k.square(DrumsPred-OthersTrue) + k.square(BassPred-OthersTrue) ,axis=-1)
+    
+def MetricRecons(yTrue,yPred):
+    BassTrue = yTrue[:,:,:,:,0]
+    BassPred = yPred[:,:,:,:,0]              
+    DrumsTrue = yTrue[:,:,:,:,1]
+    DrumsPred = yPred[:,:,:,:,1]
+    OthersTrue = yTrue[:,:,:,:,2]
+    OthersPred = yPred[:,:,:,:,2]
+    VocalsTrue = yTrue[:,:,:,:,3]
+    VocalsPred = yPred[:,:,:,:,3]
+    
+    return k.mean(k.square(BassTrue + DrumsTrue + OthersTrue + VocalsTrue - BassPred - DrumsPred - OthersPred - VocalsPred),axis=-1)
+    
+def BassError(yTrue,yPred):
+    BassTrue = yTrue[:,:,:,:,0]
+    BassPred = yPred[:,:,:,:,0] 
+    
+    return k.mean(k.square(BassTrue-BassPred))
+
+def VocalsError(yTrue,yPred):
+    VocalsTrue = yTrue[:,:,:,:,3]
+    VocalsPred = yPred[:,:,:,:,3] 
+    
+    return k.mean(k.square(VocalsTrue-VocalsPred))
+
+def OthersError(yTrue,yPred):
+    OthersTrue = yTrue[:,:,:,:,2]
+    OthersPred = yPred[:,:,:,:,2] 
+    
+    return k.mean(k.square(OthersTrue-OthersPred))
+
+def DrumsError(yTrue,yPred):
+    DrumsTrue = yTrue[:,:,:,:,1]
+    DrumsPred = yPred[:,:,:,:,1]
+    
+    return k.mean(k.square(DrumsTrue-DrumsPred))

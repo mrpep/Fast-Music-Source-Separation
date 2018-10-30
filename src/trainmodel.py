@@ -1,3 +1,10 @@
+# =============================================================================
+# trainmodel.py - Leonardo Pepino (Universidad Nacional de Tres de Febrero)
+#
+# This script sets the training parameters. In the last line, number of epochs 
+# can be modified. Also, Tensorboard setting is possible.
+# =============================================================================
+
 from BatchGenerator import DataGenerator
 from ValidationGenerator import ValidationDataGenerator
 from keras.callbacks import TensorBoard

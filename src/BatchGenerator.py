@@ -1,3 +1,10 @@
+# =============================================================================
+# BatchGenerator.py - Leonardo Pepino (Universidad Nacional de Tres de Febrero)
+#
+# This script defines a Keras generator, which manages the dataset reading and
+# creates the data batches.
+# =============================================================================
+
 import numpy as np
 import os
 import scipy.io.wavfile as wavfile
@@ -6,7 +13,10 @@ import keras
 import augmentdata
 
 class DataGenerator(keras.utils.Sequence):
-    """Generador de lotes, el cual realiza rutinas de lectura de audio en bloques, para manejar bases de datos de tamaño arbitrario, y realiza data augmentation sobre la marcha (en este caso un 50%). A su vez da el formato adecuado a las entradas de la red neuronal, y calcula la STFT sobre los audios."""
+    """Generador de lotes, el cual realiza rutinas de lectura de audio en bloques,
+    para manejar bases de datos de tamaño arbitrario, y realiza data augmentation
+    sobre la marcha (en este caso un 50%). A su vez da el formato adecuado a 
+    las entradas de la red neuronal, y calcula la STFT sobre los audios."""
 	
 	
     def __init__(self,batch_size=32):

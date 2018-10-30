@@ -1,13 +1,25 @@
+# =============================================================================
+# augmentdata.py - Leonardo Pepino (Universidad Nacional de Tres de Febrero)
+#
+# This script defines data augmentation routines to apply during the training
+# phase.
+# =============================================================================
+
 from pysndfx import AudioEffectsChain
 import scipy.io.wavfile as wavfile
 import numpy as np
 
-"""Tecnicas de Data Augmentation propuestas en: Improving music source separation based on deep neural networks through data augmentation and network blending - Stefan Uhlich, Marcello Porcu, Franck Giron, Michael Enenkl, Thomas Kemp, Naoya Takahashi y Yuki Mitsufuji.
+"""Tecnicas de Data Augmentation propuestas en: Improving music source separation
+ based on deep neural networks through data augmentation and network blending - 
+ Stefan Uhlich, Marcello Porcu, Franck Giron, Michael Enenkl, Thomas Kemp, 
+ Naoya Takahashi y Yuki Mitsufuji.
 """
 
 def changeamplitudes(instruments):
 
-    """ Devuelve las pistas remezcladas con nuevas ganancias y la mezcla resultante."""
+    """ Devuelve las pistas remezcladas con nuevas ganancias y la mezcla 
+    resultante."""
+    
     minimo = 0.25
     maximo = 1.25
     newsources = []
@@ -35,7 +47,8 @@ def swapchannels(instruments):
 
     return mix, newsources
 
-"""Técnicas de aumento de datos aplicadas a la separación de fuentes musicales propuestas en la tesis."""
+"""Técnicas de aumento de datos aplicadas a la separación de fuentes musicales 
+propuestas en la tesis."""
 
 def makemono(instruments):
     
@@ -82,7 +95,10 @@ def changepitchvocal(instruments):
     shx = np.shape(instruments[0])
     shy = np.shape(pitchvocals)
     pitchvocalscut = np.zeros((shx[0],2))
-    pitchvocalscut[0:shy[1],:] = np.transpose(pitchvocals[:,0:shy[1]])
+    if shy[1]<shx[0]:
+        pitchvocalscut[0:shy[1],:] = np.transpose(pitchvocals[:,:])
+    else:
+        pitchvocalscut[:,:] = np.transpose(pitchvocals[:,0:shx[0]])   
     newsources = [instruments[0],instruments[1],instruments[2],pitchvocalscut]
     mix = instruments[0] + instruments[1] + instruments[2] + pitchvocalscut
 
@@ -182,8 +198,12 @@ def normalizeaudio(audio):
 
 def generateaugmentedset(n_sources,sourcesongs,nsongs,nframes,
                          framesperaugmentation):
+    print("aumentando")
+    """ Genera audios de mezcla nuevos con sus respectivas pistas y las guarda
+    en archivos .wav de nframes muestras. Para generarlos aplica transformaciones
+    a bloques de framesperaugmentation muestras y concatena los resultados. 
+    A su vez, aleatoriamente mezcla pistas de distintas fuentes."""
     
-    """ Genera audios de mezcla nuevos con sus respectivas pistas y las guarda en archivos .wav de nframes muestras. Para generarlos aplica transformaciones a bloques de framesperaugmentation muestras y concatena los resultados. A su vez, aleatoriamente mezcla pistas de distintas fuentes."""
     naugmentations = (nframes//framesperaugmentation)-1
     mixture = np.zeros((nframes,2))
     sources = np.zeros((nframes,2,4))
@@ -207,10 +227,11 @@ def generateaugmentedset(n_sources,sourcesongs,nsongs,nframes,
                 instrumenti = normalizeaudio(instrumenti)
                 yraws.append(instrumenti)
 
-        mix, newsources = augmentdata(yraws)
-        mixture[i*framesperaugmentation:(i+1)*framesperaugmentation,:] = mix
-        sources[i*framesperaugmentation:(i+1)*framesperaugmentation,:,:] = np.transpose(np.array(newsources),(1,2,0))
-
+        mix, newsources = augmentdata(yraws)     
+        mixture[i*framesperaugmentation:(i+1)*framesperaugmentation,:] = mix[:nframes,:]
+        newsources = np.transpose(np.array(newsources),(1,2,0))
+        sources[i*framesperaugmentation:(i+1)*framesperaugmentation,:,:] = newsources[:nframes,:,:]        
+        
     mixture = mixture.astype('float32')
     sources = sources.astype('float32')
     wavfile.write('augmented.wav',44100,mixture)

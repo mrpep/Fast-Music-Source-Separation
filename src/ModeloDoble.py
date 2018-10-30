@@ -1,3 +1,10 @@
+# =============================================================================
+# ModeloDoble.py - Leonardo Pepino (Universidad Nacional de Tres de Febrero)
+#
+# This script compiles the keras model of the convolutional neural network
+# developed. 
+# =============================================================================
+
 from MisCallbacks import CustomLossFunction, VocalsError,DrumsError,BassError,OthersError,MetricInterference,MetricOthVoc,MetricOthers,MetricRecons
 from MisCapas import softmask, stacklayers, unstacklayers, log2emphasis
 from keras.layers import Input, Add, BatchNormalization, Concatenate

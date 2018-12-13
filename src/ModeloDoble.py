@@ -136,7 +136,7 @@ def CompileModel():
     #Definición del modelo de Keras:
     modelodoble = Model(inputs = stft_input,outputs = finaloutput)
     #Especificación del optimizador:
-    opt = Adam(lr = 0.01,clipvalue = 0.9,amsgrad = True)
+    opt = Adam(lr = 0.01,clipvalue = 0.9)
     #Se compila el modelo utilizando como función de pérdida la propuesta. También se especifican errores a mostrar durante el entrenamiento con el fin de monitorear el progreso.
     modelodoble.compile(loss = CustomLossFunction,optimizer = opt,metrics = [VocalsError,DrumsError,BassError,OthersError,MetricInterference,MetricOthVoc,MetricOthers,MetricRecons])
     

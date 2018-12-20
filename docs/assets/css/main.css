@@ -3894,3 +3894,7 @@ input, select, textarea {
 audio{
 	width:70%;
 }
+
+iframe {
+	width:50%;
+}

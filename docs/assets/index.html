@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+
+<html>
+<!--
+	Web template from:
+		Hyperspace by HTML5 UP
+		html5up.net | @ajlkn
+		Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+	<head>
+		<title>Fast Music Source Separation</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#welcome">Welcome</a></li>
+							<li><a href="#listen">Listen</a></li>
+							<li><a href="#howitworks">How it works</a></li>
+							<li><a href="#about">About</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+			
+		<div id="wrapper">
+			<!-- Intro -->
+				<section id="welcome" class="wrapper style1 fullscreen fade-up"  style="text-align:center;>
+					<div class="inner">
+						<h1>Fast Music Source Separation</h1>
+						<p style="margin-left:10%;margin-right:10%">A music source separation system capable of isolating bass, drums, vocals and others from a stereophonic audio mix is presented. The system was developed
+						for the fullfilment of my degree thesis "Separación de fuentes musicales mediante redes neuronales convolucionales". The thesis report and Python scripts to perform
+						separations and train the neural network are provided in the following links:</p>
+						<div class="row">
+						<div class="col-4">
+			
+						</div>
+						<div class="col-4" style="text-align:center;">
+						<ul class="actions" style="margin-left:15%">
+							<li><a href="https://github.com/mrpep/Fast-Music-Source-Separation" class="button scrolly">Code</a></li>
+							<li><a href="#one" class="button scrolly">Report</a></li>
+						</ul>
+						</div>
+						<div class="col-4">
+						</div>
+						</div>
+					</div>
+				</section>
+				<section id="listen" class="wrapper style2 fullscreen">
+					<div class="inner">	
+							<div class="row">
+							<div class="col-6">
+							<h3>Patrick Talbot - A reason to leave</h3><br></br>
+							</div>
+							<div class="col-6">
+							<h3>Secretariat - Over the Top</h3><br></br>
+							</div>
+							</div>
+							
+							<div class="row gtr-uniform">
+							<div class="col-2" style="vertical-align:center;">
+							<p>Mixture</p>
+							</div>
+							<div class="col-4">
+								
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/A%20reason%20to%20leave%20-%20Mixture.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+								
+							</div>
+							<div class="col-2" style="vertical-align:center;">
+							<p>Mixture</p>
+							</div>
+							<div class="col-2">
+								
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Over%20the%20Top%20-%20Mixture.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							
+							</div>	
+							</div>
+
+							<div class="row gtr-uniform">
+							<div class="col-2">
+							<p>Bass</p>
+							</div>
+							<div class="col-4 align_left">
+								
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/A%20reason%20to%20leave%20-%20Bass.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+								
+							</div>
+							<div class="col-2">
+							<p>Bass</p>
+							</div>
+							<div class="col-2">
+								<div style="margin: 0 auto; display: table"> 
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Over%20the%20Top%20-%20Bass.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+								</div>
+							</div>
+							</div>							
+						
+							<div class="row gtr-uniform">
+							<div class="col-2">
+							<p>Drums</p>
+							</div>
+							<div class="col-4">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/A%20reason%20to%20leave%20-%20Drums.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							<div class="col-2">
+							<p>Drums</p>
+							</div>
+							<div class="col-2">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Over%20the%20Top%20-%20Drums.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							</div>
+							
+							<div class="row gtr-uniform">
+							<div class="col-2">
+							<p>Others</p>
+							</div>
+							<div class="col-4">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/A%20reason%20to%20leave%20-%20Others.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							<div class="col-2">
+							<p>Others</p>
+							</div>
+							<div class="col-2">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Over%20the%20Top%20-%20Others.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							</div>
+							
+							<div class="row gtr-uniform">
+							<div class="col-2">
+							<p>Vocals</p>
+							</div>
+							<div class="col-4">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/A%20reason%20to%20leave%20-%20Vocals.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							<div class="col-2">
+							<p>Vocals</p>
+							</div>
+							<div class="col-2">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Over%20the%20Top%20-%20Vocals.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							</div>
+							<br></br>
+							<div class="row">
+							<div class="col-6">
+							<h3>Hollow Ground - Ill fate</h3><br></br>
+							</div>
+							<div class="col-6">
+							<h3>Bobby Nobody - Stitch Up</h3><br></br>
+							</div>
+							</div>
+							
+														<div class="row gtr-uniform">
+							<div class="col-2" style="vertical-align:center;">
+							<p>Mixture</p>
+							</div>
+							<div class="col-4">
+								
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Ill%20Fate%20-%20Mixture.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+								
+							</div>
+							<div class="col-2" style="vertical-align:center;">
+							<p>Mixture</p>
+							</div>
+							<div class="col-2">
+								
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Stitch%20up%20-%20Mixture.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							
+							</div>	
+							</div>
+
+							<div class="row gtr-uniform">
+							<div class="col-2">
+							<p>Bass</p>
+							</div>
+							<div class="col-4 align_left">
+								
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Ill%20Fate%20-%20Bass.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+								
+							</div>
+							<div class="col-2">
+							<p>Bass</p>
+							</div>
+							<div class="col-2">
+								<div style="margin: 0 auto; display: table"> 
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Stitch%20up%20-%20Bass.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+								</div>
+							</div>
+							</div>							
+						
+							<div class="row gtr-uniform">
+							<div class="col-2">
+							<p>Drums</p>
+							</div>
+							<div class="col-4">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Ill%20Fate%20-%20Drums.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							<div class="col-2">
+							<p>Drums</p>
+							</div>
+							<div class="col-2">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Stitch%20up%20-%20Drums.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							</div>
+							
+							<div class="row gtr-uniform">
+							<div class="col-2">
+							<p>Others</p>
+							</div>
+							<div class="col-4">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Ill%20Fate%20-%20Others.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							<div class="col-2">
+							<p>Others</p>
+							</div>
+							<div class="col-2">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Stitch%20up%20-%20Other.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							</div>
+							
+							<div class="row gtr-uniform">
+							<div class="col-2">
+							<p>Vocals</p>
+							</div>
+							<div class="col-4">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Ill%20Fate%20-%20Vocals.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							<div class="col-2">
+							<p>Vocals</p>
+							</div>
+							<div class="col-2">
+								<audio controls>
+									<source src="https://raw.githubusercontent.com/mrpep/Fast-Music-Source-Separation/master/samples/Stitch%20up%20-%20Vocals.wav" type="audio/wav">
+									Your browser does not support the audio element. 
+								</audio>
+							</div>
+							</div>
+					</div>	
+				</section>
+				<section id="howitworks" class="wrapper style3 fullscreen fade-up">
+					<div class = "inner">
+						<h2>System overview</h2>
+						<p>The first step is to turn the audio mixture into an image. This can be achieved applying a <a href="#">Short Time Fourier Transform</a> and calculating its magnitude. The result is an spectrogram,
+						where the vertical axis corresponds to frequency and the horizontal axis to time.</p>
+						<p>The second step is to turn the spectrogram of the audio mixture into the spectrogram of the desired source. A nonlinear
+						mapping is learnt with a <a href="#">convolutional neural network</a>. The <a href="#">DSD100 dataset</a> is used for training. It provides mixtures and sources
+						(bass, drums, vocals and others) from 100 songs (50 for training and 50 for testing).</p>
+						<p><span class="image fit"><img src="imgs/mixtosource.png" alt="" /></p>
+						<p>The proposed neural network is inspired in DeepConvSep:</p>
+						<ul class="actions">
+							<li><a href="https://github.com/MTG/DeepConvSep" class="button scrolly">Code</a></li>
+							<li><a href="http://mtg.upf.edu/node/3680" class="button scrolly">Paper</a></li>
+						</ul>
+						<p>, but several modifications were done:</p>
+						<ul>
+							<li> Two parallel encoders with different filter shapes are used. One of the encoders captures vertical patterns in the spectrogram (percussive), while
+							the other one captures horizontal patterns (harmonic).</li>
+							<li> The convolution layers in the encoders have ReLU activations and Batch Normalization is applied. </li>
+							<li> Latent space is bigger. </li>
+							<li> The weights of the transposed convolution layers in the decoders are shared. </li>
+							<li> Data augmentation was performed and Others source optimized. </li>
+						</ul>
+						<p><span class="image fit" style="width: 75%;max-width:1200px; margin:auto;"><img src="imgs/architecture.png" alt=""></span></p>
+						<p> The convolutional neural network takes as input a stereophonic spectrogram and reduces its dimensionality using two parallel encoders.
+						The latent space consists of a fully connected layer and its output is a compact representation of the mixture. Multiple decoders take as input
+						this compact representation. The first layer of the decoders is fully connected and its purpose is to transform the representation of the mixture into 
+						a representation of the source to isolate. The next layers, which are convolutional, reconstruct spectrograms from the transformed latent space.</p>
+						<p> Instead of using a neural network for each source to separate, a single neural network is used, which outputs the estimation of the four sources (bass, drums, vocals and others).
+						This way, processing time is reduced and information of all sources is shared among decoders.</p>
+						<p> Once the spectrograms are estimated, a time-varying filter is performed through <a href="">soft masks</a>. This way, the processing comes down to filtering the input audio mixture, instead of 
+						generating from scratch new audios with the neural network. Finally, spectrograms are taken back to time domain applying the <a href="#">Griffin Lim algorithm</a>.</p>
+						<p> Currently I am exploring new neural network architectures for source separation with a focus in real time applications. I have developed a prototype of real-time audio source
+						separation which I am porting from Python to C++ so it can be run in any machine efficiently. Here it is a demo video of the prototype:
+					
+						</div>
+					</div>
+				</section>
+				<section id="about" class="wrapper style4 fullscreen fade-up">
+					<div class = "inner">
+						<p style="horizontal-align:centre;"><span class="image left" style="max-width:200px; horizontal-align:center;"><img src="imgs/me.png" alt="" /> </span>My name is Leonardo Pepino and I am passionate about
+						audio signal processing and machine learning. I like creating tools useful for artists and sharing what I learn in the way.</p>
+						<p>Feel free to write me:</p>
+						<p>leonardodpepino@gmail.com</p>
+						<ul class="icons">
+							<li><a href="https://github.com/mrpep" class="fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/leonardo-daniel-pepino-657a13159/" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						</ul>
+						
+						<p> If this was useful for your research, please reference it as:<p>
+						<blockquote>
+						@thesis{pepino2019,
+						  title={Separación de fuentes musicales mediante redes neuronales convolucionales},
+						  author={Pepino, Leonardo},
+						  school={Universidad Nacional de Tres de Febrero},
+						  year=2019
+						}
+						</blockquote
+						
+					</div>
+				</section>
+		</div>
+		<footer id="footer" class="wrapper style1-alt">
+			<div class="inner">
+				<ul class="menu">
+					<li>Fast Music Source Separation</li><li>Web template: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

@@ -309,12 +309,12 @@
 							<li><a href="https://github.com/MTG/DeepConvSep" class="button scrolly">Code</a></li>
 							<li><a href="http://mtg.upf.edu/node/3680" class="button scrolly">Paper</a></li>
 						</ul>
-						<p>, but several modifications were done:</p>
+						<p>Some of the differences with DeepConvSep are:</p>
 						<ul>
 							<li> Two parallel encoders with different filter shapes are used. One of the encoders captures vertical patterns in the spectrogram (percussive), while
 							the other one captures horizontal patterns (harmonic).</li>
 							<li> The convolution layers in the encoders have ReLU activations and Batch Normalization is applied. </li>
-							<li> Latent space is bigger. </li>
+							<li> Latent space is larger. </li>
 							<li> The weights of the transposed convolution layers in the decoders are shared. </li>
 							<li> Data augmentation was performed and Others source optimized. </li>
 						</ul>
@@ -325,7 +325,7 @@
 						a representation of the source to isolate. The next layers, which are convolutional, reconstruct spectrograms from the transformed latent space.</p>
 						<p> Instead of using a neural network for each source to separate, a single neural network is used, which outputs the estimation of the four sources (bass, drums, vocals and others).
 						This way, processing time is reduced and information of all sources is shared among decoders.</p>
-						<p> Once the spectrograms are estimated, a time-varying filter is performed through <a href="">soft masks</a>. This way, the processing comes down to filtering the input audio mixture, instead of 
+						<p> Once the spectrograms are estimated, a time-varying filter is performed through <a href="">soft masks</a>. This way, the processing reduces to filtering the input audio mixture, instead of 
 						generating from scratch new audios with the neural network. Finally, spectrograms are taken back to time domain applying the <a href="#">Griffin Lim algorithm</a>.</p>
 						<p> Currently I am exploring new neural network architectures for source separation with a focus in real time applications. I have developed a prototype of real-time audio source
 						separation which I am porting from Python to C++ so it can be run in any machine efficiently. Here it is a demo video of the prototype:

@@ -2837,7 +2837,7 @@ input, select, textarea {
 				padding-left: 0;
 			}
 
-		@media screen and (max-width: 480px) {
+		/*@media screen and (max-width: 480px) {
 
 			ul.menu > li {
 				border-left: 0;
@@ -2848,6 +2848,7 @@ input, select, textarea {
 			}
 
 		}
+		*/
 
 /* Section/Article */
 

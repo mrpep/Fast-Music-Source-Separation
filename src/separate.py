@@ -31,8 +31,8 @@ eps = np.finfo(float).eps
 print("Analizando la señal")
 
 #Se calcula la STFT, aplica el log2 de la magnitud y acondiciona el formato del tensor de entrada a la red:
-[f,t,mixturestftl] = signal.stft(audiomixture[:,0]/(2**15-1),fs,window = 'hann',nperseg = 2048, noverlap = 2048-512)        
-[f,t,mixturestftr] = signal.stft(audiomixture[:,1]/(2**15-1),fs,window = 'hann',nperseg = 2048, noverlap = 2048-512)     
+[f,t,mixturestftl] = signal.stft(audiomixture[:,0],fs,window = 'hann',nperseg = 2048, noverlap = 2048-512)        
+[f,t,mixturestftr] = signal.stft(audiomixture[:,1],fs,window = 'hann',nperseg = 2048, noverlap = 2048-512)     
 magnitudestftin = np.array([np.log2(1+np.abs(mixturestftl)),np.log2(np.abs(mixturestftr)+1)])
 sizestft = np.shape(magnitudestftin)
 nframes = sizestft[2]               

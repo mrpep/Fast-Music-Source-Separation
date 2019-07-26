@@ -3907,11 +3907,11 @@ iframe-container {
  
 iframe {
    border: 0;
-   height: 100%;
+   height: 60%;
    left: 0;
    position: absolute;
    top: 0;
-   width: 100%;
+   width: 60%;
    display: block;
 }
 

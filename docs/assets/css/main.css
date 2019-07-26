@@ -3898,6 +3898,7 @@ audio{
 
 iframe-container {
   overflow: hidden;
+  width: 50%;
   padding-top: 56.25%;
   position: relative;
 }

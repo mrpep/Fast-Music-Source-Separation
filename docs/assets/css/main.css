@@ -3785,7 +3785,6 @@ input, select, textarea {
 		}
 
 		@media screen and (max-width: 1280px) {
-
 			#sidebar {
 				height: 3.5em;
 				left: 0;
@@ -3843,8 +3842,7 @@ input, select, textarea {
 							background-image: none;
 							background-color: #b74e91;
 						}
-
-		}
+					}
 
 		@media screen and (max-width: 736px) {
 
@@ -3896,22 +3894,23 @@ audio{
 	width:70%;
 }
 
-iframe-container {
-  overflow: hidden;
-  width: 80%;
+.iframe-container {
+  width: 100%;
   padding-top: 56.25%;
   position: relative;
-  max-width: 800px;
-  align: center;
+  max-width: 1600px;
+
 }
  
-iframe {
+.iframe-container iframe {
    border: 0;
-   height: 50%;
    left: 0;
-   position: relative;
    top: 0;
-   width: 50%;
+   position: absolute;
+   height: 100%;
+   width: 100%;
    display: block;
+   background-color: red;
+
 }
 

@@ -3909,7 +3909,7 @@ iframe {
    border: 0;
    height: 50%;
    left: 0;
-   position: absolute;
+   position: relative;
    top: 0;
    width: 50%;
    display: block;

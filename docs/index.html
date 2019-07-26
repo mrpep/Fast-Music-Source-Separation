@@ -298,10 +298,10 @@
 				<section id="howitworks" class="wrapper style3 fullscreen fade-up">
 					<div class = "inner">
 						<h2>System overview</h2>
-						<p>The first step is to turn the audio mixture into an image. This can be achieved applying a <a href="#">Short Time Fourier Transform</a> and calculating its magnitude. The result is an spectrogram,
+						<p>The first step is to turn the audio mixture into an image. This can be achieved applying a <a href="https://en.wikipedia.org/wiki/Short-time_Fourier_transform">Short Time Fourier Transform</a> and calculating its magnitude. The result is an spectrogram,
 						where the vertical axis corresponds to frequency and the horizontal axis to time.</p>
 						<p>The second step is to turn the spectrogram of the audio mixture into the spectrogram of the desired source. A nonlinear
-						mapping is learnt with a <a href="#">convolutional neural network</a>. The <a href="#">DSD100 dataset</a> is used for training. It provides mixtures and sources
+						mapping is learnt with a <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">convolutional neural network</a>. The <a href="https://sigsep.github.io/datasets/dsd100.html">DSD100 dataset</a> is used for training. It provides mixtures and sources
 						(bass, drums, vocals and others) from 100 songs (50 for training and 50 for testing).</p>
 						<p><span class="image fit"><img src="imgs/mixtosource.png" alt="" /></p>
 						<p>The proposed neural network is inspired in DeepConvSep:</p>
@@ -326,7 +326,7 @@
 						<p> Instead of using a neural network for each source to separate, a single neural network is used, which outputs the estimation of the four sources (bass, drums, vocals and others).
 						This way, processing time is reduced and information of all sources is shared among decoders.</p>
 						<p> Once the spectrograms are estimated, a time-varying filter is performed through <a href="">soft masks</a>. This way, the processing reduces to filtering the input audio mixture, instead of 
-						generating from scratch new audios with the neural network. Finally, spectrograms are taken back to time domain applying the <a href="#">Griffin Lim algorithm</a>.</p>
+						generating from scratch new audios with the neural network. Finally, spectrograms are taken back to time domain applying the <a href="https://ieeexplore.ieee.org/document/1164317">Griffin Lim algorithm</a>.</p>
 						<p> Currently I am exploring new neural network architectures for source separation with a focus in real time applications. I have developed a prototype of real-time audio source
 						separation which I am porting from Python to C++ so it can be run in any machine efficiently. Here it is a demo video of the prototype:
 						

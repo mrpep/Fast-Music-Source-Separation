@@ -3898,20 +3898,20 @@ audio{
 
 iframe-container {
   overflow: hidden;
-  width: 100%;
+  width: 80%;
   padding-top: 56.25%;
   position: relative;
-  max-width:800px;
+  max-width: 800px;
   align: center;
 }
  
 iframe {
    border: 0;
-   height: 60%;
+   height: 50%;
    left: 0;
    position: absolute;
    top: 0;
-   width: 60%;
+   width: 50%;
    display: block;
 }
 

@@ -3902,6 +3902,7 @@ iframe-container {
   padding-top: 56.25%;
   position: relative;
   max-width:800px;
+  align: center;
 }
  
 iframe-container iframe {
@@ -3911,6 +3912,7 @@ iframe-container iframe {
    position: absolute;
    top: 0;
    width: 100%;
+   display: block;
 }
  
 /* 4x3 Aspect Ratio */
